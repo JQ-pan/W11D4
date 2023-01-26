@@ -1,24 +1,24 @@
-import { assertThrowStatement } from '@babel/types';
-import produceData from '../mockData/produce.json'
+// import { assertThrowStatement } from '@babel/types';
+import produceData from "../mockData/produce.json";
 
-const POPULATE = "produce/POPULATE"
+const POPULATE = "produce/POPULATE";
 
 export function populateProduce() {
-    return {
-        type: POPULATE,
-        produce: produceData
-    }
+  return {
+    type: POPULATE,
+    produce: produceData,
+  };
 }
 
 export default function produceReducer(state = {}, action) {
-    switch (action.type) {
-        case POPULATE:
-            const newState = {};
-            action.produce.forEach(element => {
-                newState[element.id] = element;
-            });
-            return newState;
-        default: 
-            return state;
-    }
+  switch (action.type) {
+    case POPULATE:
+      const newState = {};
+      action.produce.forEach((element) => {
+        newState[element.id] = element;
+      });
+      return newState;
+    default:
+      return state;
+  }
 }
